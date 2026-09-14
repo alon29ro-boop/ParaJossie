@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Jossie 🌸</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background:
+        radial-gradient(circle at 50% 45%, #4a1237 0%, #21091b 38%, #09050c 80%);
+    font-family: Georgia, "Times New Roman", serif;
+    color: white;
+}
+
+/* =========================
+   FONDO
+========================= */
+
+.glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(255, 105, 180, 0.16),
+        transparent 68%
+    );
+    filter: blur(20px);
+    animation: breathing 4s infinite ease-in-out;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        opacity: .5;
+        transform: translate(-50%, -50%) scale(.95);
+    }
+
+    50% {
+        opacity: .9;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
+}
+
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .6;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+.star:nth-child(1) { left: 12%; top: 20%; }
+.star:nth-child(2) { left: 24%; top: 10%; animation-delay: .7s; }
+.star:nth-child(3) { left: 78%; top: 18%; animation-delay: 1s; }
+.star:nth-child(4) { left: 88%; top: 35%; animation-delay: 1.5s; }
+.star:nth-child(5) { left: 8%; top: 65%; animation-delay: 2s; }
+.star:nth-child(6) { left: 91%; top: 72%; animation-delay: .3s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: .25; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* =========================
+   ESCENA
+========================= */
+
+.scene {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    transition: opacity 1.5s ease;
+}
+
+.scene.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ground {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 13%;
+    left: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 148, 205, .35),
+        transparent
+    );
+    box-shadow: 0 0 25px rgba(255, 105, 180, .2);
+}
+
+/* =========================
+   LIRIO
+========================= */
+
+.lily {
+    position: absolute;
+    width: 300px;
+    height: 510px;
+    left: 50%;
+    bottom: 13%;
+    transform: translateX(-50%);
+}
+
+/* TALLO */
+
+.stem {
+    position: absolute;
+    left: 146px;
+    bottom: 0;
+    width: 8px;
+    height: 0;
+    border-radius: 20px;
+    background: linear-gradient(
+        90deg,
+        #255b35,
+        #58a85b,
+        #255b35
+    );
+    box-shadow: 0 0 10px rgba(95, 190, 110, .3);
+    transform-origin: bottom;
+    animation: growStem 3s cubic-bezier(.2,.8,.3,1) forwards;
+}
+
+@keyframes growStem {
+    to {
+        height: 410px;
+    }
+}
+
+/* HOJAS */
+
+.leaf {
+    position: absolute;
+    width: 105px;
+    height: 30px;
+    bottom: 110px;
+    background: linear-gradient(
+        90deg,
+        #245f35,
+        #69b968
+    );
+    border-radius: 100% 0 100% 0;
+    opacity: 0;
+    transform-origin: right center;
+}
+
+.leaf.left {
+    left: 48px;
+    transform: rotate(-28deg) scale(0);
+    animation: leafLeft 1.2s 2.2s forwards ease-out;
+}
+
+.leaf.right {
+    left: 150px;
+    bottom: 165px;
+    transform: rotate(28deg) scale(0) scaleX(-1);
+    animation: leafRight 1.2s 2.5s forwards ease-out;
+}
+
+@keyframes leafLeft {
+    to {
+        opacity: 1;
+        transform: rotate(-28deg) scale(1);
+    }
+}
+
+@keyframes leafRight {
+    to {
+        opacity: 1;
+        transform: rotate(28deg) scale(1) scaleX(-1);
+    }
+}
+
+/* =========================
+   FLOR
+========================= */
+
+.flower {
+    position: absolute;
+    width: 280px;
+    height: 260px;
+
+    /*
+       El centro de la flor está exactamente
+       sobre el tallo:
+       lily left + 140px = 150px
+       stem left + 4px = 150px
+    */
+    left: 10px;
+    top: -5px;
+
+    opacity: 0;
+    transform: scale(.1);
+    animation: bloom 2.2s 2.8s forwards cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes bloom {
+    0% {
+        opacity: 0;
+        transform: scale(.1) rotate(-5deg);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+/* PÉTALOS */
+
+.petal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 70px;
+    height: 145px;
+
+    border-radius: 70% 70% 45% 45%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 25%,
+            #ffd1e7 0%,
+            #ff91c3 35%,
+            #e94f94 70%,
+            #b72e70 100%
+        );
+
+    box-shadow:
+        inset 0 0 12px rgba(255,255,255,.35),
+        0 0 18px rgba(255,80,160,.15);
+
+    transform-origin: 50% 90%;
+}
+
+/* Pétalos traseros */
+
+.back1 {
+    transform:
+        translate(-50%, -90%)
+        rotate(-32deg);
+}
+
+.back2 {
+    transform:
+        translate(-50%, -90%)
+        rotate(32deg);
+}
+
+/* Pétalos laterales */
+
+.side1 {
+    width: 76px;
+    height: 155px;
+
+    transform:
+        translate(-50%, -80%)
+        rotate(-72deg);
+}
+
+.side2 {
+    width: 76px;
+    height: 155px;
+
+    transform:
+        translate(-50%, -80%)
+        rotate(72deg);
+}
+
+/* Pétalos superiores */
+
+.top1 {
+    width: 68px;
+    height: 150px;
+
+    transform:
+        translate(-50%, -92%)
+        rotate(-8deg);
+}
+
+.top2 {
+    width: 68px;
+    height: 150px;
+
+    transform:
+        translate(-50%, -92%)
+        rotate(8deg);
+}
+
+/* =========================
+   CENTRO DEL LIRIO
+========================= */
+
+.lilyCenter {
+    position: absolute;
+
+    /*
+       EXACTAMENTE CENTRADO:
+       flower left = 10px
+       flower center = 140px
+       => x absoluto dentro de lily = 150px
+       stem center = 150px
+    */
+
+    left: 140px;
+    top: 128px;
+
+    width: 24px;
+    height: 24px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff4a8 0%,
+            #ffd45c 35%,
+            #e9a629 70%,
+            #b56d13 100%
+        );
+
+    box-shadow:
+        0 0 10px rgba(255, 215, 100, .8),
+        0 0 22px rgba(255, 170, 50, .35);
+
+    z-index: 10;
+}
+
+/* ESTAMBRES */
+
+.stamen {
+    position: absolute;
+
+    width: 4px;
+    height: 58px;
+
+    left: 140px;
+    top: 78px;
+
+    background: linear-gradient(
+        to bottom,
+        #ffe58a,
+        #d99a23
+    );
+
+    transform-origin: bottom center;
+
+    border-radius: 10px;
+
+    z-index: 8;
+}
+
+.stamen::after {
+    content: "";
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    top: -4px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #b97817;
+
+    box-shadow: 0 0 5px rgba(255,190,70,.6);
+}
+
+.stamen:nth-child(8) {
+    transform: rotate(-28deg);
+}
+
+.stamen:nth-child(9) {
+    transform: rotate(-14deg);
+}
+
+.stamen:nth-child(10) {
+    transform: rotate(0deg);
+}
+
+.stamen:nth-child(11) {
+    transform: rotate(14deg);
+}
+
+.stamen:nth-child(12) {
+    transform: rotate(28deg);
+}
+
+/* =========================
+   PÉTALOS QUE CAEN
+========================= */
+
+.fallingPetal {
+    position: fixed;
+    top: -30px;
+
+    width: 14px;
+    height: 22px;
+
+    border-radius: 80% 20% 80% 20%;
+
+    background: linear-gradient(
+        135deg,
+        #ffb2d5,
+        #ed5797
+    );
+
+    opacity: .85;
+
+    z-index: 20;
+
+    animation:
+        fall linear forwards,
+        spin 2s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translate3d(
+                var(--x),
+                110vh,
+                0
+            )
+            rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    from {
+        margin-left: 0;
+    }
+
+    to {
+        margin-left: 30px;
+    }
+}
+
+/* =========================
+   MENSAJE INICIAL
+========================= */
+
+.hint {
+    position: fixed;
+    left: 50%;
+    bottom: 7%;
+
+    transform: translateX(-50%);
+
+    width: 90%;
+
+    text-align: center;
+
+    color: #ffd5e8;
+
+    font-size: 15px;
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    animation: hintAppear 1.5s 3s forwards;
+
+    z-index: 30;
+}
+
+.hint strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-size: 22px;
+
+    color: #fff;
+}
+
+@keyframes hintAppear {
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.card {
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(25px);
+
+    width: min(92%, 570px);
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    padding: 34px 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.96),
+            rgba(255,236,246,.96)
+        );
+
+    color: #54233e;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.5),
+        0 0 35px rgba(255,105,180,.22);
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 50;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.card.show {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(0);
+}
+
+.card h1 {
+    text-align: center;
+
+    color: #c63878;
+
+    font-size: 30px;
+
+    margin-bottom: 24px;
+}
+
+.card p {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 16px;
+}
+
+.signature {
+    text-align: center;
+
+    margin-top: 28px;
+
+    font-size: 25px;
+
+    color: #c63878;
+
+    font-weight: bold;
+}
+
+/* Scroll bonito */
+
+.card::-webkit-scrollbar {
+    width: 5px;
+}
+
+.card::-webkit-scrollbar-thumb {
+    background: #e98ab5;
+    border-radius: 10px;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .lily {
+        transform: translateX(-50%) scale(.78);
+        transform-origin: bottom center;
+    }
+
+    .hint {
+        bottom: 5%;
+        font-size: 13px;
+    }
+
+    .hint strong {
+        font-size: 19px;
+    }
+
+    .card {
+        width: 92%;
+        max-height: 78vh;
+        padding: 27px 22px;
+        border-radius: 20px;
+    }
+
+    .card h1 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .card p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .signature {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+<div class="star"></div>
+
+<!-- =========================
+     ESCENA DEL LIRIO
+========================= -->
+
+<div class="scene" id="scene">
+
+    <div class="ground"></div>
+
+    <div class="lily">
+
+        <div class="stem"></div>
+
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+
+        <div class="flower">
+
+            <div class="petal back1"></div>
+            <div class="petal back2"></div>
+
+            <div class="petal side1"></div>
+            <div class="petal side2"></div>
+
+            <div class="petal top1"></div>
+            <div class="petal top2"></div>
+
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+
+            <div class="lilyCenter"></div>
+
+        </div>
+
+    </div>
+
+    <div class="hint" id="hint">
+        <strong>Para ti, Jossie 🌸</strong>
+        espera un momento...
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CARTA
+========================= -->
+
+<div class="card" id="card">
+
+    <h1>Para ti, Jossie ❤️</h1>
+
+    <p>
+        Quiero pedirte perdón.
+    </p>
+
+    <p>
+        Perdón por mi actitud, por ser tan renegón algunas veces
+        y por esos momentos en los que dejo que mi enojo hable
+        antes que yo.
+    </p>
+
+    <p>
+        Sé que últimamente hemos estado peleando casi cada semana,
+        y siendo sincero, no es algo que quiero para nosotros.
+    </p>
+
+    <p>
+        No quiero que discutir se vuelva parte de nuestra rutina
+        ni que terminemos haciéndonos daño por cosas que podríamos
+        hablar con más calma.
+    </p>
+
+    <p>
+        Sé que decirte "perdón" es fácil, pero también sé que lo
+        importante es demostrarlo.
+    </p>
+
+    <p>
+        Quiero aprender a manejar mejor mi carácter, pensar antes
+        de reaccionar y escucharte de verdad cuando algo nos moleste.
+    </p>
+
+    <p>
+        No quiero ganar discusiones contigo.
+        Quiero que aprendamos a entendernos, incluso cuando
+        pensemos diferente.
+    </p>
+
+    <p>
+        Porque al final del día, tú eres la persona con la que
+        quiero estar bien.
+    </p>
+
+    <p>
+        Y no quiero que mi forma de reaccionar termine lastimando
+        algo que para mí significa tanto.
+    </p>
+
+    <p>
+        Perdón por mis enojos, por las veces que te hice sentir mal
+        y por esas peleas que pudieron evitarse.
+    </p>
+
+    <p>
+        Voy a intentar hacerlo mejor.
+        No solamente decirlo, sino demostrártelo poco a poco.
+    </p>
+
+    <div class="signature">
+        Te amo, Jossie. ♥
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PÉTALOS
+========================= */
+
+function crearPetalo() {
+
+    const petalo = document.createElement("div");
+
+    petalo.className = "fallingPetal";
+
+    petalo.style.left =
+        Math.random() * 100 + "vw";
+
+    petalo.style.setProperty(
+        "--x",
+        (Math.random() * 160 - 80) + "px"
+    );
+
+    petalo.style.animationDuration =
+        (5 + Math.random() * 5) + "s";
+
+    petalo.style.transform =
+        `rotate(${Math.random() * 360}deg)`;
+
+    petalo.style.width =
+        (9 + Math.random() * 9) + "px";
+
+    petalo.style.height =
+        (15 + Math.random() * 12) + "px";
+
+    document.body.appendChild(petalo);
+
+    setTimeout(() => {
+        petalo.remove();
+    }, 11000);
+}
+
+
+/* Primera lluvia */
+
+setTimeout(() => {
+
+    for (let i = 0; i < 20; i++) {
+
+        setTimeout(() => {
+            crearPetalo();
+        }, i * 180);
+
+    }
+
+}, 5000);
+
+
+/* Lluvia continua */
+
+const lluvia = setInterval(() => {
+
+    crearPetalo();
+
+}, 850);
+
+
+/* =========================
+   MOSTRAR CARTA
+========================= */
+
+setTimeout(() => {
+
+    clearInterval(lluvia);
+
+    document.getElementById("scene")
+        .classList.add("hide");
+
+    document.getElementById("hint")
+        .style.display = "none";
+
+    setTimeout(() => {
+
+        document.getElementById("card")
+            .classList.add("show");
+
+    }, 1100);
+
+}, 8000);
+
+</script>
+
+</body>
+</html>
