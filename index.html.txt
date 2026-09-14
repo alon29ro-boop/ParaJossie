@@ -12,7 +12,8 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
@@ -20,7 +21,13 @@ html, body {
 
 body {
     background:
-        radial-gradient(circle at 50% 45%, #4a1237 0%, #21091b 38%, #09050c 80%);
+        radial-gradient(
+            circle at 50% 45%,
+            #4a1237 0%,
+            #21091b 38%,
+            #09050c 80%
+        );
+
     font-family: Georgia, "Times New Roman", serif;
     color: white;
 }
@@ -31,52 +38,108 @@ body {
 
 .glow {
     position: fixed;
+
     width: 500px;
     height: 500px;
+
     left: 50%;
     top: 48%;
+
     transform: translate(-50%, -50%);
-    background: radial-gradient(
-        circle,
-        rgba(255, 105, 180, 0.16),
-        transparent 68%
-    );
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 105, 180, 0.16),
+            transparent 68%
+        );
+
     filter: blur(20px);
+
     animation: breathing 4s infinite ease-in-out;
 }
 
 @keyframes breathing {
-    0%, 100% {
+    0%,
+    100% {
         opacity: .5;
-        transform: translate(-50%, -50%) scale(.95);
+        transform:
+            translate(-50%, -50%)
+            scale(.95);
     }
 
     50% {
         opacity: .9;
-        transform: translate(-50%, -50%) scale(1.08);
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
     }
 }
 
+/* ESTRELLAS */
+
 .star {
     position: fixed;
+
     width: 2px;
     height: 2px;
+
     background: white;
+
     border-radius: 50%;
+
     opacity: .6;
-    animation: twinkle 3s infinite ease-in-out;
+
+    animation:
+        twinkle 3s infinite ease-in-out;
 }
 
-.star:nth-child(1) { left: 12%; top: 20%; }
-.star:nth-child(2) { left: 24%; top: 10%; animation-delay: .7s; }
-.star:nth-child(3) { left: 78%; top: 18%; animation-delay: 1s; }
-.star:nth-child(4) { left: 88%; top: 35%; animation-delay: 1.5s; }
-.star:nth-child(5) { left: 8%; top: 65%; animation-delay: 2s; }
-.star:nth-child(6) { left: 91%; top: 72%; animation-delay: .3s; }
+.star:nth-child(1) {
+    left: 12%;
+    top: 20%;
+}
+
+.star:nth-child(2) {
+    left: 24%;
+    top: 10%;
+    animation-delay: .7s;
+}
+
+.star:nth-child(3) {
+    left: 78%;
+    top: 18%;
+    animation-delay: 1s;
+}
+
+.star:nth-child(4) {
+    left: 88%;
+    top: 35%;
+    animation-delay: 1.5s;
+}
+
+.star:nth-child(5) {
+    left: 8%;
+    top: 65%;
+    animation-delay: 2s;
+}
+
+.star:nth-child(6) {
+    left: 91%;
+    top: 72%;
+    animation-delay: .3s;
+}
 
 @keyframes twinkle {
-    0%, 100% { opacity: .25; transform: scale(.7); }
-    50% { opacity: 1; transform: scale(1.5); }
+    0%,
+    100% {
+        opacity: .25;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
 }
 
 /* =========================
@@ -86,8 +149,11 @@ body {
 .scene {
     position: fixed;
     inset: 0;
+
     z-index: 2;
-    transition: opacity 1.5s ease;
+
+    transition:
+        opacity 1.5s ease;
 }
 
 .scene.hide {
@@ -95,19 +161,27 @@ body {
     pointer-events: none;
 }
 
+/* SUELO */
+
 .ground {
     position: absolute;
+
     width: 100%;
     height: 2px;
+
     bottom: 13%;
     left: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 148, 205, .35),
-        transparent
-    );
-    box-shadow: 0 0 25px rgba(255, 105, 180, .2);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 148, 205, .35),
+            transparent
+        );
+
+    box-shadow:
+        0 0 25px rgba(255, 105, 180, .2);
 }
 
 /* =========================
@@ -116,31 +190,48 @@ body {
 
 .lily {
     position: absolute;
+
     width: 300px;
     height: 510px;
+
     left: 50%;
     bottom: 13%;
-    transform: translateX(-50%);
+
+    transform:
+        translateX(-50%);
 }
 
-/* TALLO */
+/* =========================
+   TALLO
+========================= */
 
 .stem {
     position: absolute;
+
     left: 146px;
     bottom: 0;
+
     width: 8px;
     height: 0;
+
     border-radius: 20px;
-    background: linear-gradient(
-        90deg,
-        #255b35,
-        #58a85b,
-        #255b35
-    );
-    box-shadow: 0 0 10px rgba(95, 190, 110, .3);
+
+    background:
+        linear-gradient(
+            90deg,
+            #255b35,
+            #58a85b,
+            #255b35
+        );
+
+    box-shadow:
+        0 0 10px rgba(95, 190, 110, .3);
+
     transform-origin: bottom;
-    animation: growStem 3s cubic-bezier(.2,.8,.3,1) forwards;
+
+    animation:
+        growStem 3s cubic-bezier(.2,.8,.3,1)
+        forwards;
 }
 
 @keyframes growStem {
@@ -149,47 +240,102 @@ body {
     }
 }
 
-/* HOJAS */
+/* =========================
+   HOJAS
+========================= */
 
 .leaf {
     position: absolute;
+
     width: 105px;
     height: 30px;
-    bottom: 110px;
-    background: linear-gradient(
-        90deg,
-        #245f35,
-        #69b968
-    );
-    border-radius: 100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #245f35,
+            #69b968
+        );
+
+    border-radius:
+        100% 0 100% 0;
+
     opacity: 0;
-    transform-origin: right center;
+
+    transform-origin:
+        100% 50%;
 }
+
+/* HOJA IZQUIERDA */
 
 .leaf.left {
-    left: 48px;
-    transform: rotate(-28deg) scale(0);
-    animation: leafLeft 1.2s 2.2s forwards ease-out;
+    left: 45px;
+    bottom: 115px;
+
+    transform:
+        rotate(-28deg)
+        scale(0);
+
+    animation:
+        leafLeft 1.2s 2.2s
+        forwards ease-out;
 }
 
+/* HOJA DERECHA */
+
 .leaf.right {
-    left: 150px;
+    /*
+       Esta hoja nace del mismo tallo,
+       pero sube ligeramente.
+    */
+
+    left: 148px;
     bottom: 165px;
-    transform: rotate(28deg) scale(0) scaleX(-1);
-    animation: leafRight 1.2s 2.5s forwards ease-out;
+
+    transform:
+        rotate(28deg)
+        scale(0);
+
+    animation:
+        leafRight 1.2s 2.5s
+        forwards ease-out;
 }
 
 @keyframes leafLeft {
-    to {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotate(-28deg)
+            scale(0);
+    }
+
+    100% {
         opacity: 1;
-        transform: rotate(-28deg) scale(1);
+
+        transform:
+            rotate(-28deg)
+            scale(1);
     }
 }
 
 @keyframes leafRight {
-    to {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotate(28deg)
+            scale(0);
+    }
+
+    100% {
         opacity: 1;
-        transform: rotate(28deg) scale(1) scaleX(-1);
+
+        transform:
+            rotate(28deg)
+            scale(1);
     }
 }
 
@@ -199,51 +345,77 @@ body {
 
 .flower {
     position: absolute;
+
     width: 280px;
     height: 260px;
 
     /*
-       El centro de la flor está exactamente
-       sobre el tallo:
-       lily left + 140px = 150px
-       stem left + 4px = 150px
+       Centro exacto:
+       left = 10px
+       centro = 140px
+       posición total = 150px
+
+       Tallo:
+       left = 146px
+       ancho = 8px
+       centro = 150px
     */
+
     left: 10px;
     top: -5px;
 
     opacity: 0;
-    transform: scale(.1);
-    animation: bloom 2.2s 2.8s forwards cubic-bezier(.2,.8,.2,1);
+
+    transform:
+        scale(.1);
+
+    animation:
+        bloom 2.2s 2.8s
+        forwards cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes bloom {
+
     0% {
         opacity: 0;
-        transform: scale(.1) rotate(-5deg);
+
+        transform:
+            scale(.1)
+            rotate(-5deg);
     }
 
     60% {
         opacity: 1;
-        transform: scale(1.08) rotate(2deg);
+
+        transform:
+            scale(1.08)
+            rotate(2deg);
     }
 
     100% {
         opacity: 1;
-        transform: scale(1) rotate(0);
+
+        transform:
+            scale(1)
+            rotate(0);
     }
 }
 
-/* PÉTALOS */
+/* =========================
+   PÉTALOS DEL LIRIO
+========================= */
 
 .petal {
     position: absolute;
+
     left: 50%;
     top: 50%;
 
     width: 70px;
     height: 145px;
 
-    border-radius: 70% 70% 45% 45%;
+    border-radius:
+        70% 70% 45% 45%;
 
     background:
         radial-gradient(
@@ -255,13 +427,17 @@ body {
         );
 
     box-shadow:
-        inset 0 0 12px rgba(255,255,255,.35),
-        0 0 18px rgba(255,80,160,.15);
+        inset 0 0 12px
+        rgba(255,255,255,.35),
 
-    transform-origin: 50% 90%;
+        0 0 18px
+        rgba(255,80,160,.15);
+
+    transform-origin:
+        50% 90%;
 }
 
-/* Pétalos traseros */
+/* PÉTALOS TRASEROS */
 
 .back1 {
     transform:
@@ -275,7 +451,7 @@ body {
         rotate(32deg);
 }
 
-/* Pétalos laterales */
+/* PÉTALOS LATERALES */
 
 .side1 {
     width: 76px;
@@ -295,7 +471,7 @@ body {
         rotate(72deg);
 }
 
-/* Pétalos superiores */
+/* PÉTALOS SUPERIORES */
 
 .top1 {
     width: 68px;
@@ -323,11 +499,7 @@ body {
     position: absolute;
 
     /*
-       EXACTAMENTE CENTRADO:
-       flower left = 10px
-       flower center = 140px
-       => x absoluto dentro de lily = 150px
-       stem center = 150px
+       CENTRO EXACTO DE LA FLOR
     */
 
     left: 140px;
@@ -336,7 +508,8 @@ body {
     width: 24px;
     height: 24px;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
@@ -350,13 +523,18 @@ body {
         );
 
     box-shadow:
-        0 0 10px rgba(255, 215, 100, .8),
-        0 0 22px rgba(255, 170, 50, .35);
+        0 0 10px
+        rgba(255, 215, 100, .8),
+
+        0 0 22px
+        rgba(255, 170, 50, .35);
 
     z-index: 10;
 }
 
-/* ESTAMBRES */
+/* =========================
+   ESTAMBRES
+========================= */
 
 .stamen {
     position: absolute;
@@ -367,13 +545,15 @@ body {
     left: 140px;
     top: 78px;
 
-    background: linear-gradient(
-        to bottom,
-        #ffe58a,
-        #d99a23
-    );
+    background:
+        linear-gradient(
+            to bottom,
+            #ffe58a,
+            #d99a23
+        );
 
-    transform-origin: bottom center;
+    transform-origin:
+        bottom center;
 
     border-radius: 10px;
 
@@ -382,6 +562,7 @@ body {
 
 .stamen::after {
     content: "";
+
     position: absolute;
 
     width: 9px;
@@ -390,13 +571,16 @@ body {
     top: -4px;
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     border-radius: 50%;
 
     background: #b97817;
 
-    box-shadow: 0 0 5px rgba(255,190,70,.6);
+    box-shadow:
+        0 0 5px
+        rgba(255,190,70,.6);
 }
 
 .stamen:nth-child(8) {
@@ -425,18 +609,21 @@ body {
 
 .fallingPetal {
     position: fixed;
+
     top: -30px;
 
     width: 14px;
     height: 22px;
 
-    border-radius: 80% 20% 80% 20%;
+    border-radius:
+        80% 20% 80% 20%;
 
-    background: linear-gradient(
-        135deg,
-        #ffb2d5,
-        #ed5797
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #ffb2d5,
+            #ed5797
+        );
 
     opacity: .85;
 
@@ -448,6 +635,7 @@ body {
 }
 
 @keyframes fall {
+
     to {
         transform:
             translate3d(
@@ -456,11 +644,13 @@ body {
                 0
             )
             rotate(720deg);
+
         opacity: 0;
     }
 }
 
 @keyframes spin {
+
     from {
         margin-left: 0;
     }
@@ -476,10 +666,12 @@ body {
 
 .hint {
     position: fixed;
+
     left: 50%;
     bottom: 7%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 90%;
 
@@ -488,11 +680,14 @@ body {
     color: #ffd5e8;
 
     font-size: 15px;
+
     letter-spacing: 1px;
 
     opacity: 0;
 
-    animation: hintAppear 1.5s 3s forwards;
+    animation:
+        hintAppear 1.5s 3s
+        forwards;
 
     z-index: 30;
 }
@@ -508,6 +703,7 @@ body {
 }
 
 @keyframes hintAppear {
+
     to {
         opacity: 1;
     }
@@ -528,6 +724,7 @@ body {
         translateY(25px);
 
     width: min(92%, 570px);
+
     max-height: 80vh;
 
     overflow-y: auto;
@@ -546,10 +743,14 @@ body {
     border-radius: 24px;
 
     box-shadow:
-        0 20px 80px rgba(0,0,0,.5),
-        0 0 35px rgba(255,105,180,.22);
+        0 20px 80px
+        rgba(0,0,0,.5),
+
+        0 0 35px
+        rgba(255,105,180,.22);
 
     opacity: 0;
+
     pointer-events: none;
 
     z-index: 50;
@@ -599,7 +800,7 @@ body {
     font-weight: bold;
 }
 
-/* Scroll bonito */
+/* SCROLL */
 
 .card::-webkit-scrollbar {
     width: 5px;
@@ -607,6 +808,7 @@ body {
 
 .card::-webkit-scrollbar-thumb {
     background: #e98ab5;
+
     border-radius: 10px;
 }
 
@@ -617,12 +819,17 @@ body {
 @media (max-width: 600px) {
 
     .lily {
-        transform: translateX(-50%) scale(.78);
-        transform-origin: bottom center;
+        transform:
+            translateX(-50%)
+            scale(.78);
+
+        transform-origin:
+            bottom center;
     }
 
     .hint {
         bottom: 5%;
+
         font-size: 13px;
     }
 
@@ -632,18 +839,23 @@ body {
 
     .card {
         width: 92%;
+
         max-height: 78vh;
+
         padding: 27px 22px;
+
         border-radius: 20px;
     }
 
     .card h1 {
         font-size: 25px;
+
         margin-bottom: 20px;
     }
 
     .card p {
         font-size: 16px;
+
         line-height: 1.7;
     }
 
@@ -656,6 +868,10 @@ body {
 
 <body>
 
+<!-- =========================
+     FONDO
+========================= -->
+
 <div class="glow"></div>
 
 <div class="star"></div>
@@ -665,8 +881,9 @@ body {
 <div class="star"></div>
 <div class="star"></div>
 
+
 <!-- =========================
-     ESCENA DEL LIRIO
+     ESCENA
 ========================= -->
 
 <div class="scene" id="scene">
@@ -675,12 +892,20 @@ body {
 
     <div class="lily">
 
+        <!-- TALLO -->
+
         <div class="stem"></div>
+
+        <!-- HOJAS -->
 
         <div class="leaf left"></div>
         <div class="leaf right"></div>
 
+        <!-- FLOR -->
+
         <div class="flower">
+
+            <!-- PÉTALOS -->
 
             <div class="petal back1"></div>
             <div class="petal back2"></div>
@@ -691,11 +916,15 @@ body {
             <div class="petal top1"></div>
             <div class="petal top2"></div>
 
+            <!-- ESTAMBRES -->
+
             <div class="stamen"></div>
             <div class="stamen"></div>
             <div class="stamen"></div>
             <div class="stamen"></div>
             <div class="stamen"></div>
+
+            <!-- CENTRO -->
 
             <div class="lilyCenter"></div>
 
@@ -703,9 +932,17 @@ body {
 
     </div>
 
+
+    <!-- MENSAJE -->
+
     <div class="hint" id="hint">
-        <strong>Para ti, Jossie 🌸</strong>
+
+        <strong>
+            Para ti, Jossie 🌸
+        </strong>
+
         espera un momento...
+
     </div>
 
 </div>
@@ -717,7 +954,9 @@ body {
 
 <div class="card" id="card">
 
-    <h1>Para ti, Jossie ❤️</h1>
+    <h1>
+        Para ti, Jossie ❤️
+    </h1>
 
     <p>
         Quiero pedirte perdón.
@@ -786,14 +1025,16 @@ body {
 <script>
 
 /* =========================
-   PÉTALOS
+   CREAR PÉTALOS
 ========================= */
 
 function crearPetalo() {
 
-    const petalo = document.createElement("div");
+    const petalo =
+        document.createElement("div");
 
-    petalo.className = "fallingPetal";
+    petalo.className =
+        "fallingPetal";
 
     petalo.style.left =
         Math.random() * 100 + "vw";
@@ -815,22 +1056,34 @@ function crearPetalo() {
     petalo.style.height =
         (15 + Math.random() * 12) + "px";
 
-    document.body.appendChild(petalo);
+    document.body.appendChild(
+        petalo
+    );
 
     setTimeout(() => {
+
         petalo.remove();
+
     }, 11000);
 }
 
 
-/* Primera lluvia */
+/* =========================
+   PRIMERA LLUVIA
+========================= */
 
 setTimeout(() => {
 
-    for (let i = 0; i < 20; i++) {
+    for (
+        let i = 0;
+        i < 20;
+        i++
+    ) {
 
         setTimeout(() => {
+
             crearPetalo();
+
         }, i * 180);
 
     }
@@ -838,13 +1091,16 @@ setTimeout(() => {
 }, 5000);
 
 
-/* Lluvia continua */
+/* =========================
+   LLUVIA CONTINUA
+========================= */
 
-const lluvia = setInterval(() => {
+const lluvia =
+    setInterval(() => {
 
-    crearPetalo();
+        crearPetalo();
 
-}, 850);
+    }, 850);
 
 
 /* =========================
@@ -855,15 +1111,18 @@ setTimeout(() => {
 
     clearInterval(lluvia);
 
-    document.getElementById("scene")
+    document
+        .getElementById("scene")
         .classList.add("hide");
 
-    document.getElementById("hint")
+    document
+        .getElementById("hint")
         .style.display = "none";
 
     setTimeout(() => {
 
-        document.getElementById("card")
+        document
+            .getElementById("card")
             .classList.add("show");
 
     }, 1100);
